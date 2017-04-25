@@ -21,8 +21,8 @@ public interface BaseUser {
     public int getMyAge();
     public int getMyParty(); 
     public void setMyParty(int party);
-    public int getMyState(); 
-    public void setMyState(int state);
+    public State getMyState(); 
+    public void setMyState(State state);
     public int getMyDistrict();
     public void setMyDistrict(int district);
     public void setMyAge(String birthday);
@@ -58,8 +58,4 @@ public interface BaseUser {
     public int getMyReligion();
     public void setMyReligion(int religion);
     public boolean getPremium(); 
-    public void setPremium(); 
-    
-     
-    
 }

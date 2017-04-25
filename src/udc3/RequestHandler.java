@@ -134,15 +134,13 @@ public class RequestHandler {
             }
             //"pu" for PremiumUser
             else if(info[0].equals("pu")){
-                return new PremiumUser(info[1], info[2], info[3], 
-                info[4], info[5], info[6], info[7].equals("t"),
-                info[8], info[9], info[10], info[11]);
+                return new User(info[1], info[2], info[3], 
+                info[4], info[5], info[6], info[7].equals("t"));
             }
             //"pr" for PoliticalRepresentative
             else if(info[0].equals("pr")){
                 return new Rep(info[1], info[2], info[3], 
-                info[4], info[5], info[6], info[7].equals("t"),
-                info[8], info[9], info[10], info[11]);
+                info[4], info[5], info[6], info[7]., info[8], info[9]);
             }
             else{
                 return null;
@@ -155,7 +153,7 @@ public class RequestHandler {
             HashMap<String, User> toReturn = new HashMap<>();
             List<String[]> users = parser.getUsers();
             
-            for(int i =0; i<users.size(); i++)
+            for(int i =0; i < users.size(); i++)
                 toReturn.put(users.get(i)[0], factory.build(users.get(i)));
             
             return toReturn;

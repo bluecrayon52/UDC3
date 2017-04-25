@@ -39,20 +39,19 @@ public class DataSet {
         }
     }  
      
-    public void filterState(ArrayList<Integer> states){
+    public void filterState(EnumSet<State> states){
         
         // do nothing
         if (states.isEmpty() || states.size()==50){
             return; 
         }
         
-       
         if (states.size()<=25){
             
             for(Map.Entry<String, BaseUser> user : Users.entrySet()){
                 int count = 0; 
                 
-                for(Integer state: states){
+                for(State state: states){
                     if (user.getValue().getMyState() == state)
                         break; 
                     else 
@@ -65,23 +64,13 @@ public class DataSet {
         }
         
         else{
-            int tempCount = 1; 
-            int missingStates = 50 - states.size(); 
             
-            ArrayList<Integer> negateStates = new ArrayList<>(); 
+            EnumSet<State> negateStates = EnumSet.complementOf(states); 
             
-            while (tempCount<=50 && negateStates.size()<missingStates){
-                
-                if(!states.contains(tempCount)){
-                    negateStates.add(tempCount); 
-                    tempCount++;  
-                }
-             
-            }
             
             for(Map.Entry<String, BaseUser> user : Users.entrySet()){
                 
-                for(Integer state: negateStates){
+                for(State state: negateStates){
                     
                     if (user.getValue().getMyState() == state){
                         Users.remove(user.getKey());  
@@ -136,7 +125,7 @@ public class DataSet {
                 
                 for(Integer district: negateDistricts){
                     
-                    if (user.getValue().getMyState() == district){
+                    if (user.getValue().getMyDistrict()== district){
                         Users.remove(user.getKey());  
                         break; 
                     }

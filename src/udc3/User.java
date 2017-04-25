@@ -15,23 +15,32 @@ import java.time.format.DateTimeFormatter;
  */
 public class User implements BaseUser {
    protected String firstName, lastName, email, userName, userID, pswrd;
-   protected boolean isPremium = false; 
+   protected boolean isPremium; 
     
     // some ints represent string that are chosen from drop down boxes in GUI
-   private int state, district, ethnicity, employment, earnings, party,education, 
-               gender, maritalStatus, children, religion, sexualOrientation; 
+   protected int district, earnings, maritalStatus, children; 
    
-   private LocalDate birthday; 
-   private LocalDate start; 
+   protected State state; 
+   protected Party party; 
+   protected Gender gender; 
+   protected Ethnicity ethnicity; 
+   protected Employment employment; 
+   protected Religion religion; 
+   protected Education education; 
+   protected SexualOrientation sexualOrientation; 
    
-   private HashMap<String, Integer> myVotes = new HashMap<>(); 
-   private HashMap<String, List<String>> myComments = new HashMap<>(); 
    
-   private List<String> following = new ArrayList<>(); 
-   private List<String> memberships = new ArrayList<>();  
+   protected LocalDate birthday; 
+   protected LocalDate start; 
    
-    protected User(String firstName, String lastName, String email, 
-                    String userName, String userID, String pswrd) {
+   protected HashMap<String, Integer> myVotes = new HashMap<>(); 
+   protected HashMap<String, List<String>> myComments = new HashMap<>(); 
+   
+   protected List<String> following = new ArrayList<>(); 
+   protected List<String> memberships = new ArrayList<>();  
+   
+   protected User(String firstName, String lastName, String email, 
+                    String userName, String userID, String pswrd, Boolean prem) {
         
         this.firstName = firstName;
         this.lastName = lastName;
@@ -39,6 +48,7 @@ public class User implements BaseUser {
         this.userName = userName;
         this.userID = userID;
         this.pswrd = pswrd; 
+        isPremium = prem; 
         setStartDate();
     }
 
@@ -77,12 +87,12 @@ public class User implements BaseUser {
     }
     
    @Override
-    public int getMyState(){
+    public State getMyState(){
         return state; 
     }
     
    @Override
-    public void setMyState(int state){
+    public void setMyState(State state){
         this.state = state; 
     }
     
@@ -356,10 +366,6 @@ public class User implements BaseUser {
     protected boolean sendMessage(String username){
         return false;
     }
-   @Override
-    public void setPremium(){
-        isPremium = !isPremium; 
-    } 
     
    @Override
     public boolean getPremium(){
@@ -367,6 +373,7 @@ public class User implements BaseUser {
     }
     
     protected String[] toArray(){
+        
         return new String[]{"u", firstName, lastName, email, userName,
             userID, pswrd };
     }
