@@ -17,7 +17,7 @@ public class Rep extends User{
     private double CScore; 
     
     public Rep(String firstName, String lastName, String email, String userName, String userID, 
-               String password, State state, int district, int party) {
+               String password, State state, int district, Party party) {
         
         super(firstName, lastName, email, userName, userID, password, false);
             

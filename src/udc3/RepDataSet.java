@@ -12,33 +12,33 @@ import java.util.Map;
  *
  * @author nathanielclayarnold
  */
-public class RepDataSet extends DataSet{
+public class RepDataSet extends UserDataSet{
     
-    private String dataKey;
-    private HashMap<String, Rep> Users = new HashMap<>();
+    @Override 
+    protected HashMap populate(){
+        // retrieve users from a database
+        return null; 
+    }
     
-    public RepDataSet(){
-        RequestHandler rhReps = new RequestHandler("testReps.txt", "testRNtoID.txt");
-        Users = rhReps.getReps(); 
-        }
-   
      public void filterScore(double low, double high){
          // inclusions
         if (low <= high){
-            for(Map.Entry<String, Rep> rep: Users.entrySet()){
-                double score = rep.getValue().getScore(); 
+            for(Map.Entry<String, User> rep: users.entrySet()){
+                Rep temp = (Rep)rep.getValue();
+                double score = temp.getScore(); 
                     if(!(score >= low && score <= high)){
-                        Users.remove(rep.getKey());
+                        users.remove(rep.getKey());
                     }
             }
         }
         
         // exclusions 
         else{
-            for(Map.Entry<String, Rep> rep: Users.entrySet()){
-                double score = rep.getValue().getScore(); 
+            for(Map.Entry<String, User> rep: users.entrySet()){
+                Rep temp = (Rep)rep.getValue(); 
+                double score = temp.getScore(); 
                     if(!(score >= low || score <= high)){
-                        Users.remove(rep.getKey());
+                        users.remove(rep.getKey());
                     }
             }
         }
@@ -48,20 +48,22 @@ public class RepDataSet extends DataSet{
     public void filterOfficialVoteFreq(double low, double high){
         // inclusions
         if (low <= high){
-            for(Map.Entry<String, Rep> rep: Users.entrySet()){
-                double freq = rep.getValue().getOfclVoteFreq(); 
+            for(Map.Entry<String, User> rep: users.entrySet()){
+                Rep temp = (Rep)rep.getValue(); 
+                double freq = temp.getOfclVoteFreq(); 
                     if(!(freq >= low && freq <= high)){
-                        Users.remove(rep.getKey());
+                        users.remove(rep.getKey());
                     }
             }
         }
         
         // exclusions 
         else{
-            for(Map.Entry<String, Rep> rep: Users.entrySet()){
-                double freq = rep.getValue().getOfclVoteFreq(); 
+            for(Map.Entry<String, User> rep: users.entrySet()){
+                Rep temp = (Rep)rep.getValue(); 
+                double freq = temp.getOfclVoteFreq(); 
                     if(!(freq >= low || freq <= high)){
-                        Users.remove(rep.getKey());
+                        users.remove(rep.getKey());
                     }
             }
         }
@@ -69,19 +71,20 @@ public class RepDataSet extends DataSet{
     }
     
     public void filterOfficialVote(HashMap<String, Integer> votes){
-        for(Map.Entry<String, Rep> rep : Users.entrySet()){
-            
+        for(Map.Entry<String, User> rep : users.entrySet()){
+            Rep temp = (Rep)rep.getValue();
             int count = 0;
             
                 for(Map.Entry<String, Integer> vote : votes.entrySet()){
-                    if(rep.getValue().getOfclVote(vote.getKey()) == vote.getValue())
+                    
+                    if(temp.getOfclVote(vote.getKey()) == vote.getValue())
                         break; 
                     else 
                         count++;
                 }  
                 
                 if (count == votes.size())
-                    Users.remove(rep.getKey());
+                    users.remove(rep.getKey());
                 
         }
     }

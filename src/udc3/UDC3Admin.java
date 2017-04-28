@@ -14,8 +14,7 @@ import java.util.*;
 public class UDC3Admin implements BaseAdmin{
     
     private String AdminID, AdminPswrd; 
-    private DataSet superSet; 
-    private DataSet repSuperSet; 
+    private DataSet superSet;  
     private HashMap<String, DataSet> DataSetHash = new HashMap<>();
     private HashMap<String, TempAdmin> AccessHash = new HashMap<>(); 
     
@@ -28,16 +27,17 @@ public class UDC3Admin implements BaseAdmin{
         }
         return null; 
     }
-    public void populateSuperSet(){
-        superSet = new DataSet(); 
+    public void populateUserSuperSet(){
+        superSet = new UserDataSet(); 
     }
     
    public void populateRepSuperSet(){
-       repSuperSet = new RepDataSet(); 
+       superSet = new RepDataSet(); 
    }
    
     @Override
     public DataSet createSubSet(DataSet superSet) {
+        
         if(){
             superSet.filterAge(0, 0);
         }
@@ -47,6 +47,7 @@ public class UDC3Admin implements BaseAdmin{
         }
         
         if(){
+            
             superSet.filterCom(IntityIDs);
         }
         
@@ -111,26 +112,33 @@ public class UDC3Admin implements BaseAdmin{
         }
         
         if(){
-            superSet.filterVote(AdminID, true);
+            superSet.filterVote(votes);
         }
         
         if(){
             superSet.filterVoteFreq(0, 0);
         }
         
-        if(){
-            superSet.filterScore(0, 0);
-        }
-        
-        if(){
-            superSet.filterOfficialVote(AdminID, 0);
-        }
-        
-        if(){
-            superSet.filterOfficialVoteFreq(0, 0);
-        }
-        
         return superSet; 
+    }
+    
+    public RepDataSet createRepSubSet(){
+        
+        RepDataSet repSetCast = (RepDataSet)superSet; 
+        
+        if(){
+            repSetCast.filterScore(0, 0);
+        }
+        
+        if(){
+            repSetCast.filterOfficialVote(votes);
+        }
+        
+        if(){
+            repSetCast.filterOfficialVoteFreq(0, 0);
+        }
+        
+        return repSetCast; 
     }
     
     @Override

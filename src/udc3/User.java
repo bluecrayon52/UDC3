@@ -77,12 +77,12 @@ public class User implements BaseUser {
         this.pswrd = pswrd; 
     }
    @Override
-    public int getMyParty(){
+    public Party getMyParty(){
         return party; 
     }
     
    @Override
-    public void setMyParty(int party){
+    public void setMyParty(Party party){
         this.party = party; 
     }
     
@@ -242,32 +242,32 @@ public class User implements BaseUser {
     }
     
    @Override
-    public int getEthnicity(){
+    public Ethnicity getEthnicity(){
         return ethnicity; 
     }
     
    @Override
-    public void setEthnicity(int ethnicity){
+    public void setEthnicity(Ethnicity ethnicity){
         this.ethnicity = ethnicity; 
     }
     
    @Override
-    public int getEmployment(){
+    public Employment getEmployment(){
         return employment; 
     }
     
    @Override
-    public void setEmployment(int employment){
+    public void setEmployment(Employment employment){
         this.employment = employment; 
     }
     
    @Override
-    public int getEducation(){
+    public Education getEducation(){
         return education; 
     }
     
    @Override
-    public void setEducation(int education){
+    public void setEducation(Education education){
         this.education = education; 
     }
     
@@ -302,32 +302,32 @@ public class User implements BaseUser {
     }
     
    @Override
-    public int getMyGender(){
+    public Gender getMyGender(){
         return gender; 
     }
     
    @Override
-    public void setMyGender(int gender){
+    public void setMyGender(Gender gender){
         this.gender = gender; 
     }
     
    @Override
-    public int getMySexualOrientation(){
+    public SexualOrientation getMySexualOrientation(){
         return sexualOrientation; 
     }
     
    @Override
-    public void setMySexualOrientation(int sexualOrientation){
+    public void setMySexualOrientation(SexualOrientation sexualOrientation){
         this.sexualOrientation = sexualOrientation; 
     }
     
    @Override
-    public int getMyReligion(){
+    public Religion getMyReligion(){
         return religion; 
     }
     
    @Override
-    public void setMyReligion(int religion){
+    public void setMyReligion(Religion religion){
         this.religion = religion; 
     }
     
