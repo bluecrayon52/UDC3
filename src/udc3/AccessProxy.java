@@ -11,24 +11,18 @@ import java.util.*;
  *
  * @author nathanielclayarnold
  */
-public class TempAdmin implements BaseAdmin{
-
-    private String accessID, accessPswrd; 
-    private HashMap<String, DataSet> myVotes = new HashMap<>();
+public class AccessProxy implements BaseAdmin{
     
+    private UDC3Admin tempAdmin = new UDC3Admin(); 
+            
     @Override
     public DataSet getDataSet(String dataSetID) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       return tempAdmin.getDataSet(dataSetID); 
     }
 
     @Override
     public DataSet createSubSet(DataSet superSet) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void deletDataSet(String dataSetID) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return tempAdmin.createSubSet(superSet); 
     }
 
     @Override
@@ -53,6 +47,11 @@ public class TempAdmin implements BaseAdmin{
 
     @Override
     public void setPswrd(String pswrd) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void deletDataSet(String dataSetID) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

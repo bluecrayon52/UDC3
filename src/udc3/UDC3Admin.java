@@ -16,7 +16,7 @@ public class UDC3Admin implements BaseAdmin{
     private String AdminID, AdminPswrd; 
     private DataSet superSet;  
     private HashMap<String, DataSet> DataSetHash = new HashMap<>();
-    private HashMap<String, TempAdmin> AccessHash = new HashMap<>(); 
+    private HashMap<String, AccessProxy> AccessHash = new HashMap<>(); 
     
     @Override
     public DataSet getDataSet(String dataSetID) {

@@ -11,7 +11,7 @@ import java.util.List;
  *
  * @author nathanielclayarnold
  */
-public interface BaseUser {
+interface BaseUser {
      
     public boolean verifyLogin(String userID, String pswrd); 
     public String getID(); 

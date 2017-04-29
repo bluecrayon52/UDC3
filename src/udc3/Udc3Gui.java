@@ -30,7 +30,7 @@ import org.controlsfx.control.CheckComboBox;
  *
  * @author nathanielclayarnold
  */
-public class Udc3Gui extends Application {
+class Udc3Gui extends Application {
     
     @Override
     public void start(Stage primaryStage) {
@@ -62,7 +62,7 @@ public class Udc3Gui extends Application {
             public void handle(ActionEvent event) {
                 System.out.println("Hello World!");
             }
-        });
+        }); 
         
         // Create a Data Set 
         btn3.setOnAction(new EventHandler<ActionEvent>() {

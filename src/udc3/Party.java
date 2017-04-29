@@ -11,7 +11,7 @@ package udc3;
  */
 public enum Party {
     REPUBLICAN,
-    DEMCRATIC,
-    INDEPENDANT,
+    DEMOCRATIC,
+    INDEPENDENT,
     OTHER; 
 }
